@@ -33,7 +33,8 @@ function setup() {
   Xmax = windowWidth - border;
   Ymax = windowHeight - border;
 
-  coordinates.push([Math.floor((Xmax + border) / 2), Ymax]);
+  //coordinates.push([Math.floor((Xmax + border) / 2), Ymax]);
+
 }
 
 function draw() {
@@ -41,7 +42,28 @@ function draw() {
 
   if(frameCount++ >= 15 && coordinates.length < 100) {
     frameCount = 1;
-    createPoint();
+    //createPoint();
+    $.ajax({
+      url: "http://localhost:3000/api/local/info/mission",
+      type: "GET",
+      success: function(result) {
+        x = result.pose.point.x + Math.floor(windowWidth / 2);
+        y = result.pose.point.y + Math.floor(windowHeight / 2);
+        if(coordinates.length > 0) {
+          if(x == coordinates[coordinates.length - 1][0] && y == coordinates[coordinates.length - 1][1]) {
+
+          } else {
+            console.log("X: " + x);
+            console.log("Y: " + y);
+            coordinates.push([x, y]);
+          }
+        } else {
+          console.log("X: " + x);
+          console.log("Y: " + y);
+          coordinates.push([x, y]);
+        }
+      }
+    });
   }
 
   for(i = 0; i < coordinates.length; i++) {
