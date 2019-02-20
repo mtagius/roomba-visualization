@@ -151,6 +151,11 @@ function draw() {
     screenCoordinates[i][1] += Math.floor(((windowHeight - (2 * border)) - highestY) / 2);
   }
 
+  //fix the y axis mirror
+  for(i = 0; i < screenCoordinates.length; i++) {
+    screenCoordinates[i][1] = windowHeight - screenCoordinates[i][1];
+  }
+
   for(i = 0; i < screenCoordinates.length; i++) {
     fill("#40493B");
     noStroke();
