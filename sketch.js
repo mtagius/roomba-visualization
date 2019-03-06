@@ -39,7 +39,7 @@ function setup() {
 }
 
 function draw() {
-  background("#f0f9f0");
+  background("#ffffff");
 
   if(frameCount++ >= 15) {
     frameCount = 1;
@@ -157,11 +157,11 @@ function draw() {
   }
 
   for(i = 0; i < screenCoordinates.length; i++) {
-    fill("#40493B");
+    fill("#000000");
     noStroke();
     //ellipse(screenCoordinates[i][0], screenCoordinates[i][1], dotSize, dotSize);
     if(i > 0) {
-      stroke("#40493B");
+      stroke("#000000");
       strokeWeight(3);
       line(screenCoordinates[i - 1][0], screenCoordinates[i - 1][1], screenCoordinates[i][0], screenCoordinates[i][1]);
     }
